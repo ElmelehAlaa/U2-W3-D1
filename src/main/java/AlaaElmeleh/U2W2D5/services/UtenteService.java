@@ -35,6 +35,7 @@ public class UtenteService {
         newUtente.setEmail(body.email());
         newUtente.setCognome(body.cognome());
         newUtente.setUsername(body.username());
+        newUtente.setPassword(body.password());
         return utentiRepository.save(newUtente);
 
     }
@@ -64,6 +65,10 @@ public class UtenteService {
         String cloudinaryURL = (String) cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap()).get("url");
         foundUtente.setAvatarUrl(cloudinaryURL);
         return utentiRepository.save(foundUtente);
+    }
+
+    public Utente findByEmail(String email){
+        return utentiRepository.findByEmail(email).orElseThrow(()-> new NotFoundException("utente con email" + email + "non trovato!"));
     }
 
 }

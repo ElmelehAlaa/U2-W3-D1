@@ -27,19 +27,19 @@ public class UtenteController {
         return utentiService.getUtenti(page,size,orderBy);
     }
 
-    @PostMapping("")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Utente saveUtente(@RequestBody @Validated NewUtenteDTO body, BindingResult validation){
-        if(validation.hasErrors()){
-            throw new BadRequestException(validation.getAllErrors());
-        }else {
-            try {
-                    return utentiService.save(body);
-            }catch (IOException e ){
-                throw new RuntimeException(e);
-            }
-        }
-    }
+//    @PostMapping("")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Utente saveUtente(@RequestBody @Validated NewUtenteDTO body, BindingResult validation){
+//        if(validation.hasErrors()){
+//            throw new BadRequestException(validation.getAllErrors());
+//        }else {
+//            try {
+//                    return utentiService.save(body);
+//            }catch (IOException e ){
+//                throw new RuntimeException(e);
+//            }
+//        }
+//    }
 
     @GetMapping(value = "/{id}")
     public Utente findById(@PathVariable int id){return  utentiService.findById(id);}
