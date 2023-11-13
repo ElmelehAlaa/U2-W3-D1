@@ -27,6 +27,7 @@ public class Utente {
     @OneToMany(mappedBy = "utenteAssegnato",cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Dispositivo> dispositivo;
+    private String password;
     @CreationTimestamp
     private Date createdAt;
 }
